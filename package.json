@@ -1,11 +1,12 @@
 {
   "name": "use-rx",
   "version": "1.0.0",
-  "description": "",
+  "description": "React custom hook that return a state carried by an observable managing subscription and unsubscription",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "rxjs",
@@ -16,5 +17,12 @@
   ],
   "author": "enrico giacomazzi (enrico@giacomazzi.cc)",
   "homepage": "https://github.com/enricogiacomazzi/use-rx",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "rxjs": "^6.5.5"
+  }
 }

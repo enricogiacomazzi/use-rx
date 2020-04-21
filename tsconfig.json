@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "Node",
+        "target": "es6",
+        "declaration": true,
+        "outDir": "./"
+    },
+    "files": [
+        "src/index.ts"
+    ]
+}
