@@ -1,6 +1,6 @@
 {
   "name": "use-rx",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React custom hook that return a state carried by an observable managing subscription and unsubscription",
   "main": "index.js",
   "types": "index.d.ts",
