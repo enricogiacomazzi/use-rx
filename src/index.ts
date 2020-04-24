@@ -1,13 +1,19 @@
-import { useState, useEffect } from 'react';
-import {Observable} from 'rxjs';
+import {useState, useEffect, useMemo} from 'react';
+import {BehaviorSubject, NEVER, Observable} from 'rxjs';
+import {switchMap} from "rxjs/operators";
 
-
-export function useRx<T>(state$: Observable<T>, initialState: T = null): T {
+export function useRx<T>(state$: Observable<T>, initialState: T): T {
     const [state, setState] = useState<T>(initialState);
+    const states$: BehaviorSubject<Observable<T>> = useMemo(() => new BehaviorSubject<Observable<T>>(NEVER), []);
+
     useEffect(() => {
-        const sub = state$.subscribe(setState, e => {throw new Error(e)}, () => sub && sub.unsubscribe());
+        states$.next(state$);
+    }, ['state$']);
+
+    useEffect(() => {
+        const sub = states$.pipe(switchMap(x => x)).subscribe(setState);
         return () => sub && sub.unsubscribe();
-    }, [state$]);
+    }, []);
 
     return state;
 }
