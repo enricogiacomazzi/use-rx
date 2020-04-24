@@ -6,7 +6,7 @@ function useRx(state$, initialState = null) {
     react_1.useEffect(() => {
         const sub = state$.subscribe(setState);
         return () => sub && sub.unsubscribe();
-    }, [state$]);
+    }, ['state$']);
     return state;
 }
 exports.useRx = useRx;
